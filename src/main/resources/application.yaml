@@ -1,0 +1,8 @@
+application:
+  greeting: hello world
+
+spring:
+  application:
+    name: vanilla
+  main:
+    banner-mode: "off"
