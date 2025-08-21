@@ -1,9 +1,9 @@
 plugins {
-	kotlin("jvm") version "2.0.10"
-	kotlin("plugin.spring") version "2.0.10"
-	id("org.springframework.boot") version "3.5.4"
+	kotlin("jvm") version "2.2.10"
+	kotlin("plugin.spring") version "2.2.10"
+	id("org.springframework.boot") version "3.5.5"
 	id("io.spring.dependency-management") version "1.1.7"
-	id("io.gitlab.arturbosch.detekt") version "1.23.7"
+	id("io.gitlab.arturbosch.detekt") version "1.23.8"
 }
 
 group = "de.codecentric"
@@ -23,13 +23,13 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("io.github.oshai:kotlin-logging-jvm:7.0.7")
-	implementation("net.logstash.logback:logstash-logback-encoder:8.0")
+	implementation("io.github.oshai:kotlin-logging-jvm:7.0.13")
+	implementation("net.logstash.logback:logstash-logback-encoder:8.1")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testImplementation("io.kotest:kotest-assertions-core-jvm:5.9.1")
-	testImplementation("io.mockk:mockk:1.13.8")
+	testImplementation("io.mockk:mockk:1.14.5")
 	testImplementation("com.ninja-squad:springmockk:4.0.2")
 
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
@@ -52,7 +52,7 @@ detekt {
 }
 
 dependencies {
-	detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.7")
+	detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.8")
 }
 
 tasks.check {
