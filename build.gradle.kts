@@ -55,6 +55,7 @@ dependencies {
 	detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.7")
 }
 
+// avoids errors like this one https://detekt.dev/docs/gettingstarted/gradle/#gradle-runtime-dependencies
 configurations.matching { it.name == "detekt" }.all {
 	resolutionStrategy.eachDependency {
 		if (requested.group == "org.jetbrains.kotlin") {
