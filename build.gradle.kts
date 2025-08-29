@@ -3,7 +3,7 @@ plugins {
 	kotlin("plugin.spring") version "2.2.10"
 	id("org.springframework.boot") version "3.5.5"
 	id("io.spring.dependency-management") version "1.1.7"
-	id("io.gitlab.arturbosch.detekt") version "1.23.8"
+	id("io.gitlab.arturbosch.detekt") version "1.23.7"
 }
 
 group = "de.codecentric"
@@ -52,7 +52,16 @@ detekt {
 }
 
 dependencies {
-	detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.8")
+	detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.7")
+}
+
+configurations.matching { it.name == "detekt" }.all {
+	resolutionStrategy.eachDependency {
+		if (requested.group == "org.jetbrains.kotlin") {
+			@Suppress("UnstableApiUsage")
+			useVersion(io.gitlab.arturbosch.detekt.getSupportedKotlinVersion())
+		}
+	}
 }
 
 tasks.check {
