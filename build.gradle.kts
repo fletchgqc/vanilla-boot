@@ -55,7 +55,7 @@ dependencies {
 	detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.7")
 }
 
-// avoids errors like this one https://detekt.dev/docs/gettingstarted/gradle/#gradle-runtime-dependencies
+// avoids failures like "detekt was compiled with Kotlin 2.0.21 but is currently running with 2.2.10."
 configurations.matching { it.name == "detekt" }.all {
 	resolutionStrategy.eachDependency {
 		if (requested.group == "org.jetbrains.kotlin") {
