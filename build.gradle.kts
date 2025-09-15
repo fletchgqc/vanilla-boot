@@ -65,8 +65,23 @@ configurations.matching { it.name == "detekt" }.all {
 	}
 }
 
-tasks.check {
-	dependsOn(tasks.detekt)
+tasks.register<io.gitlab.arturbosch.detekt.Detekt>("detektWithIgnoreFailures") {
+	description = "Run detekt with auto-correct, ignoring failures"
+	group = "verification"
+
+	ignoreFailures = true
+	autoCorrect = true
+	config.setFrom("$projectDir/config/detekt/detekt.yml")
+	buildUponDefaultConfig = true
+	setSource(files("src/main/kotlin", "src/test/kotlin"))
+}
+
+
+tasks.register("detektTwice") {
+	description = "Run detekt twice - first with ignoreFailures=true, second with ignoreFailures=false"
+	group = "verification"
+
+	dependsOn("detektWithIgnoreFailures", "detekt")
 }
 
 tasks.named<org.springframework.boot.gradle.tasks.bundling.BootBuildImage>("bootBuildImage") {
