@@ -4,6 +4,7 @@ plugins {
 	id("org.springframework.boot") version "3.5.5"
 	id("io.spring.dependency-management") version "1.1.7"
 	id("io.gitlab.arturbosch.detekt") version "1.23.7"
+	id("com.google.cloud.tools.jib") version "3.4.5"
 }
 
 group = "de.codecentric"
@@ -76,21 +77,10 @@ tasks.register<io.gitlab.arturbosch.detekt.Detekt>("detektWithIgnoreFailures") {
 	setSource(files("src/main/kotlin", "src/test/kotlin"))
 }
 
-
 tasks.register("detektTwice") {
-	description = "Run detekt twice - first with ignoreFailures=true, second with ignoreFailures=false"
+	description = "Run detekt twice - first with auto-correct, second to verify"
 	group = "verification"
-
-	dependsOn("detektWithIgnoreFailures", "detekt")
-}
-
-tasks.named<org.springframework.boot.gradle.tasks.bundling.BootBuildImage>("bootBuildImage") {
-	val gcpProject = System.getenv("GCP_PROJECT") ?: "vanilla"
-	val imageTag = System.getenv("CI_COMMIT_SHA") ?: project.version.toString()
-	imageName.set("europe-west1-docker.pkg.dev/$gcpProject/vanilla/vanilla:$imageTag")
-	environment.set(mapOf(
-		"BP_JVM_VERSION" to "21",
-		"BPL_JVM_HEAD_ROOM" to "10",
-		"JAVA_TOOL_OPTIONS" to "-Xmx400m -XX:MaxMetaspaceSize=128m -XX:ReservedCodeCacheSize=64m"
-	))
+	// This causes the tasks to run in serial. If both tasks are in dependsOn, they run in parallel.
+	dependsOn("detektWithIgnoreFailures")
+	finalizedBy("detekt")
 }
