@@ -4,6 +4,9 @@
     "config:best-practices"
   ],
   "automerge": true,
+  "dependencyDashboard": false,
+  "minimumReleaseAge": "14 days",
+  "osvVulnerabilityAlerts": true,
   "packageRules": [
     {
       "groupName": "All npm dependencies",
