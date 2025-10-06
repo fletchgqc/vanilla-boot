@@ -1,9 +1,9 @@
 plugins {
-	kotlin("jvm") version "2.2.10"
-	kotlin("plugin.spring") version "2.2.10"
-	id("org.springframework.boot") version "3.5.5"
+	kotlin("jvm") version "2.2.20"
+	kotlin("plugin.spring") version "2.2.20"
+	id("org.springframework.boot") version "3.5.6"
 	id("io.spring.dependency-management") version "1.1.7"
-	id("io.gitlab.arturbosch.detekt") version "1.23.7"
+	id("io.gitlab.arturbosch.detekt") version "1.23.8"
 	id("com.google.cloud.tools.jib") version "3.4.5"
 }
 
@@ -30,7 +30,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testImplementation("io.kotest:kotest-assertions-core-jvm:6.0.3")
-	testImplementation("io.mockk:mockk:1.14.5")
+	testImplementation("io.mockk:mockk:1.14.6")
 	testImplementation("com.ninja-squad:springmockk:4.0.2")
 
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
@@ -53,7 +53,7 @@ detekt {
 }
 
 dependencies {
-	detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.7")
+	detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.8")
 }
 
 // avoids failures like "detekt was compiled with Kotlin 2.0.21 but is currently running with 2.2.10."
