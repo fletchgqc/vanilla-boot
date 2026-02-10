@@ -29,7 +29,7 @@ dependencies {
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-	testImplementation("io.kotest:kotest-assertions-core-jvm:6.1.1")
+	testImplementation("io.kotest:kotest-assertions-core-jvm:6.1.2")
 	testImplementation("io.mockk:mockk:1.14.9")
 	testImplementation("com.ninja-squad:springmockk:4.0.2")
 
