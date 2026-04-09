@@ -1,7 +1,7 @@
 plugins {
 	kotlin("jvm") version "2.3.20"
 	kotlin("plugin.spring") version "2.3.20"
-	id("org.springframework.boot") version "3.5.13"
+	id("org.springframework.boot") version "4.0.5"
 	id("io.spring.dependency-management") version "1.1.7"
 	id("io.gitlab.arturbosch.detekt") version "1.23.8"
 	id("com.google.cloud.tools.jib") version "3.5.3"
@@ -24,14 +24,14 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("io.github.oshai:kotlin-logging-jvm:7.0.14")
+	implementation("io.github.oshai:kotlin-logging-jvm:8.0.01")
 	implementation("net.logstash.logback:logstash-logback-encoder:9.0")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 	testImplementation("io.kotest:kotest-assertions-core-jvm:6.1.9")
 	testImplementation("io.mockk:mockk:1.14.9")
-	testImplementation("com.ninja-squad:springmockk:4.0.2")
+	testImplementation("com.ninja-squad:springmockk:5.0.1")
 
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
